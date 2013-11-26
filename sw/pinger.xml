@@ -1,0 +1,43 @@
+<Pinger>
+  <BeaconList>
+  </BeaconList>
+  <BeaconListConfig>
+    <BeaconListURL>http://www-iepm.slac.stanford.edu/pinger/beacons.txt</BeaconListURL>
+    <HttpGetBin>/usr/local/bin/lynx -source -dump %s</HttpGetBin>
+    <RefreshInterval>1 week</RefreshInterval>
+  </BeaconListConfig>
+  <DataDirectory>/usr/local/share/pinger/data</DataDirectory>
+  <DefaultHost>
+    <Alarm>
+      <AlarmCmd>echo '%message' | /bin/mail `whoami` -s &quot;PingER2 Error Message&quot;</AlarmCmd>
+      <Enabled>true</Enabled>
+      <Snooze>true</Snooze>
+      <TimeToNotification>12 hours</TimeToNotification>
+    </Alarm>
+    <EnableDNSCache>true</EnableDNSCache>
+    <Enabled>true</Enabled>
+    <LogType>full</LogType>
+    <Name>N/A</Name>
+    <Ping>
+      <NumPings>10</NumPings>
+      <PacketSize>100</PacketSize>
+    </Ping>
+    <Ping>
+      <NumPings>10</NumPings>
+      <PacketSize>1000</PacketSize>
+    </Ping>
+    <Protocol>IPV4</Protocol>
+    <WaitTime>1</WaitTime>
+  </DefaultHost>
+  <HostList>
+  </HostList>
+  <MaxProcessCount>25</MaxProcessCount>
+  <PingV4Cmd>/bin/ping -n -w %deadline -c %count -i %interval -s %packetsize %destination</PingV4Cmd>
+  <PingV6Cmd>/bin/ping6 -n -w %deadline -c %count -i %interval -s %packetsize %destination</PingV6Cmd>
+  <SrcName>pinger.slac.stanford.edu</SrcName>
+  <Version>2.0.1</Version>
+  <dnsV4Cmd>/usr/local/share/pinger/dnsV4Cmd.pl %destination</dnsV4Cmd>
+  <dnsV6Cmd>/usr/bin/dig -t aaaa +short %destination</dnsV6Cmd>
+  <doRandomWait>true</doRandomWait>
+  <waitInterval>30</waitInterval>
+</Pinger>
